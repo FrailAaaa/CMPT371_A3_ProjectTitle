@@ -119,10 +119,10 @@ Important Notes
 
 Video Demo
 
-
+Generative AI tools (ChatGPT) were used to assist in designing and refining the graphical user interface (GUI) components of the application. All networking logic, socket programming, threading, and application functionality were implemented independently.
 
 
  Team Information
 
 Name:  TANUSH DHOOPAR, JASON SANDHU
-Student ID:  301596040 , 
+Student ID:  301596040 , 301584310
