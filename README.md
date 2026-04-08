@@ -62,12 +62,9 @@ Built-in libraries used:
 - socket
 - threading
 
-RUBRIC NOTE: A requirements.txt file is included. Tkinter may require installation depending on the system.
 
 
 5. Step-by-Step Run Guide
-
-RUBRIC NOTE: The grader must be able to copy-paste these commands.
 
 
 
@@ -123,7 +120,6 @@ Threading is used to continuously listen for incoming messages without blocking 
 
 7. Academic Integrity & References
 
-RUBRIC NOTE: List all references used and help you got.
 
 Code Origin:  
 The socket structure and GUI integration were developed based on course concepts and lectures. All networking logic, threading, and application functionality were implemented independently.
