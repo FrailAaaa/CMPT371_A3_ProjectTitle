@@ -10,7 +10,7 @@ The application provides two modes:
 - Join Mode: Connects to an existing host using an IP address and port
 
 A graphical user interface (GUI) is implemented using Tkinter to make interaction simple and user-friendly.
-
+. 
 Limitations and Design Considerations
 The following limitations and potential issues may arise in this application:
 
