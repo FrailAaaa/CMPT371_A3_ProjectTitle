@@ -1,128 +1,139 @@
-# Assignment3-371
+Course: CMPT 371 - Data Communications & Networking  
+Instructor: Mirza Zaeem Baig  
+Semester: Spring 2026  
 
-Peer-to-Peer Chat Application
-
-Project Description
-This project is a Peer-to-Peer (P2P) chat application developed using Python and the Socket API. It allows two users to communicate directly over a TCP connection without requiring a centralized server.
-
-The application provides two modes:
-- Host Mode: Starts a server and waits for a connection
-- Join Mode: Connects to an existing host using an IP address and port
-
-A graphical user interface (GUI) is implemented using Tkinter to make interaction simple and user-friendly.
-. 
-Limitations and Design Considerations
-The following limitations and potential issues may arise in this application:
-
-- Only supports communication between two users at a time
-- Messages are sent in plain text (no encryption)
-- Requires manual input of IP address and port number
-- No authentication mechanism (any user can connect if IP/port is known)
-- No persistent message storage (chat history is lost after closing the program)
-- No support for file transfer or multimedia
-- Connection may fail if firewall blocks the selected port
-- If a client disconnects unexpectedly, the connection is terminated
-- High network latency may cause delays in message delivery
-- No automatic reconnection handling
-
-Requirements
-
-Software Requirements
-- Python 3.x
+RUBRIC NOTE: As per submission guidelines, only one group member will submit the link to this repository on Canvas.
 
 
-Setup and Installation Guide
 
-Follow these steps exactly to run the application on a fresh system.
+Group Members
+TANUSH DHOOPAR, JASON SANDHU 
+301596040, 301584310
 
 
-Step 1: Download the Project
+1. Project Overview & Description
 
-Option 1 (Git):
-git clone <your-repo-link>
-cd <your-repo-name>
+This project is a Peer-to-Peer (P2P) chat application built using Python’s Socket API (TCP) and a graphical user interface (GUI) using Tkinter. The application allows two users to establish a direct connection and exchange messages in real-time without the need for a centralized server.
 
-Option 2:
-- Download the ZIP from GitHub
-- Extract it
-- Open a terminal in the project folder
+One user acts as the host, creating a listening socket, while the other user joins by connecting to the host’s IP address and port. The application demonstrates core networking concepts such as socket creation, connection establishment, data transmission, and concurrent communication using threads.
 
-Step 3: Install Dependencies
-Run the following command:
-pip install -r requirements.txt
 
-Note:
-- The application uses built-in libraries such as socket and threading
-- Tkinter is required for the GUI
 
-If tkinter is not installed on your system:
+2. System Limitations & Edge Cases
 
-Windows:
-pip install tk
+As required by the project specifications, the following limitations and potential issues have been identified:
 
-Linux:
-sudo apt-get install python3-tk
+Handling Multiple Clients Concurrently:  
+Solution: The application uses Python’s threading module to handle message receiving in a separate thread, ensuring the GUI remains responsive.  
+Limitation: The system only supports a single peer-to-peer connection (2 users). It does not scale to multiple clients.
 
-Mac:
-brew install python-tk
+Client Disconnection:  
+Solution: If a peer disconnects, the application detects an empty message or exception and safely closes the connection.  
+Limitation: There is no automatic reconnection feature.
 
-How to Run the Application
+Network Errors / Invalid Input:  
+Solution: Basic error handling is implemented using try/except blocks to prevent crashes.  
+Limitation: No advanced validation or recovery mechanisms are implemented.
 
-Make sure you are inside the project directory.
+High Latency:  
+Limitation: Messages may be delayed depending on network conditions. No buffering or optimization is implemented.
 
-Run:
+Security:  
+Limitation: Messages are transmitted in plain text. No encryption or authentication is implemented.
+
+
+
+3. Video Demo
+
+https://www.youtube.com/watch?v=T96xUCGRjRA
+
+Our 2-minute video demonstration covering connection establishment, data exchange, and application termination can be viewed below:
+
+Watch Project Demo: 
+
+
+4. Prerequisites (Fresh Environment)
+
+To run this project, you need:
+
+- Python 3.10 or higher
+- Tkinter (for GUI)
+
+Built-in libraries used:
+- socket
+- threading
+
+RUBRIC NOTE: A requirements.txt file is included. Tkinter may require installation depending on the system.
+
+
+5. Step-by-Step Run Guide
+
+RUBRIC NOTE: The grader must be able to copy-paste these commands.
+
+
+
+Step 1: Start Host (User 1)
+
+Open terminal and run:
+
 python main.py
 
-(Replace main.py with your actual file name if it is different)
-
-How to Use the Application
-
- Case 1: Two Users on the Same Computer
-
-Host (User 1):
-1. Select "Host"
-2. Enter a listening port (e.g., 5000)
-3. Click "Start"
-4. Wait for the second user to connect
-
-Join (User 2):
-1. Select "Join"
-2. Enter IP address: 127.0.0.1
-3. Enter the same port (e.g., 5000)
-4. Click "Start"
-
-Case 2: Two Different Devices (Same Network)
-
-Host:
-1. Find your local IP address
-
-Windows:
-ipconfig
-
-Mac/Linux:
-ifconfig
-
-2. Use your IPv4 address (example: 192.168.x.x)
-3. Start hosting with a chosen port
-
-Join:
-1. Enter the host's IP address
-2. Enter the same port number
-3. Click "Start"
-
-Important Notes
-
-- Both users must use the same port number
-- The host must start first before the client connects
-- Ensure firewall settings allow the selected port
-- Use 127.0.0.1 for testing on the same machine
-
-Video Demo
-
-Generative AI tools (ChatGPT) were used to assist in designing and refining the graphical user interface (GUI) components of the application. All networking logic, socket programming, threading, and application functionality were implemented independently.
+In the application:
+- Select "Host"
+- Enter a port (e.g., 5000)
+- Click "Start"
 
 
- Team Information
+Step 2: Start Client (User 2)
 
-Name:  TANUSH DHOOPAR, JASON SANDHU
-Student ID:  301596040 , 301584310
+Open a second terminal and run:
+
+python main.py
+
+
+   In the application:
+- Select "Join"
+- Enter host IP:
+  - Use `127.0.0.1` for same machine
+  - Or local IP (e.g., 192.168.x.x) for different devices
+- Enter same port (e.g., 5000)
+- Click "Start"
+
+
+
+    Step 3: Chat
+
+- Once connected, both users can send messages
+- Messages appear in real-time
+- If one user disconnects, the connection closes
+
+
+6. Technical Protocol Details
+
+The application uses TCP sockets for communication.
+
+- Protocol: TCP
+- Communication Type: Peer-to-Peer (direct connection)
+- Message Format: Plain text strings encoded using UTF-8
+- Sending: sendall()
+- Receiving: recv(1024)
+
+Threading is used to continuously listen for incoming messages without blocking the GUI.
+
+
+
+7. Academic Integrity & References
+
+RUBRIC NOTE: List all references used and help you got.
+
+Code Origin:  
+The socket structure and GUI integration were developed based on course concepts and lectures. All networking logic, threading, and application functionality were implemented independently.
+
+GenAI Usage:  
+ChatGPT was used to assist in designing and refining the graphical user interface (GUI) .
+
+References:
+- Python Socket Programming Documentation  
+- Tkinter Documentation  
+- Course Lecture Notes and Tutorials  
+
